@@ -15,8 +15,17 @@
             $('#voiceTesterLogicpbut').click();
         },
         speakDual: function(dualPhrase) {
-            lang.speak.call(lang.ru, dualPhrase.ru);
-            lang.speak.call(lang.tr, dualPhrase.tr);
+            setTimeout(lang.speak.bind(lang.ru, dualPhrase.ru), 0);
+            setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), 3000);
+        },
+        getDualPhrase: function() {
+            return lang.dualPhrases[ Math.round( Math.random() * (lang.dualPhrases.length - 1) ) ];
+        }
+        sequence: function() {
+            var dualPhrase = lang.getDualPhrase();
+            console.log(dualPhrase);
+            lang.speakDual(dualPhrase);
+            setTimeout(lang.sequence, 7000);
         },
         dualPhrases: [
             {
