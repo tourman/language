@@ -21,7 +21,7 @@
             setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), lang.delay + lang.k * dualPhrase.ru.length);
         },
         getDualPhrase: function() {
-            return lang.dualPhrases[ Math.round( Math.random() * (lang.dualPhrases.length - 1) ) ];
+            return lang.dualPhrases[ Math.floor( Math.random() * (lang.dualPhrases.length - 1) ) ];
         },
         sequence: function() {
             var dualPhrase = lang.getDualPhrase();
