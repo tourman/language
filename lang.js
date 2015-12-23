@@ -2,6 +2,8 @@
     var lang = {
         ru: window,
         tr: window,
+        delay: 250,
+        k: 64,
         openWindow: function() {
             return window.open(document.location, '_blank');
         },
@@ -16,7 +18,7 @@
         },
         speakDual: function(dualPhrase) {
             setTimeout(lang.speak.bind(lang.ru, dualPhrase.ru), 0);
-            setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), 250 + 64 * dualPhrase.ru.length);
+            setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), lang.delay + lang.k * dualPhrase.ru.length);
         },
         getDualPhrase: function() {
             return lang.dualPhrases[ Math.round( Math.random() * (lang.dualPhrases.length - 1) ) ];
