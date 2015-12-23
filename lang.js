@@ -1,31 +1,33 @@
-(function($) {
+(function() {
     var lang = {
-        iframes: function() {
-            var $div = $('div')
-                .attr({
-                    id: 'iframes'
-                })
-                .css({
-                    position: 'absolute',
-                    zIndex: 1000,
-                    width: '100%',
-                    height: '100%'
-                });
-            $('body').prepend($div);
-            $div.append(lang.$getIframe()).append(lang.$getIframe());
+        ru: window,
+        tr: window,
+        openWindow: function() {
+            return window.open(document.location, '_blank');
         },
-        $getIframe: function() {
-            var $iframe = $('iframe')
-                .attr({
-                    src: 'https://www.ivona.com/us/'
-                })
-                .css({
-                    display: 'block',
-                    width: '100%',
-                    height: '50%'
-                });
-            return $iframe;
-        }
+        openWindows: function() {
+            lang.ru = lang.openWindow();
+            lang.tr = lang.openWindow();
+        },
+        speak: function(phrase) {
+            var $ = this.jQuery;
+            $('#VoiceTesterForm_text').val(phrase);
+            $('#voiceTesterLogicpbut').click();
+        },
+        speakDual: function(dualPhrase) {
+            lang.speak.call(lang.ru, dualPhrase.ru);
+            lang.speak.call(lang.tr, dualPhrase.tr);
+        },
+        dualPhrases: [
+            {
+                ru: 'Здравствуйте!',
+                tr: 'Merhaba!'
+            },
+            {
+                ru: 'Дела хорошо.',
+                tr: 'iyiyim.'
+            }
+        ]
     };
     window.lang = lang;
-})(jQuery);
+})();
