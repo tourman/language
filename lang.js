@@ -16,7 +16,7 @@
         },
         speakDual: function(dualPhrase) {
             setTimeout(lang.speak.bind(lang.ru, dualPhrase.ru), 0);
-            setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), 3000);
+            setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), 2000);
         },
         getDualPhrase: function() {
             return lang.dualPhrases[ Math.round( Math.random() * (lang.dualPhrases.length - 1) ) ];
@@ -29,12 +29,20 @@
         },
         dualPhrases: [
             {
-                ru: 'Здравствуйте!',
-                tr: 'Merhaba!'
+                tr: 'Affedersiniz.',
+                ru: 'Простите.'
             },
             {
-                ru: 'Дела хорошо.',
-                tr: 'iyiyim.'
+                tr: 'Affedersin.',
+                ru: 'Извини.'
+            },
+            {
+                tr: 'Bakar mısınız?',
+                ru: 'Извините, не могли бы вы посмотреть?'
+            },
+            {
+                tr: 'Özür dilerim.',
+                ru: 'Прошу прощения, когда провинились.'
             }
         ]
     };
