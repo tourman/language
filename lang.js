@@ -2,8 +2,8 @@
     var lang = {
         ru: window,
         tr: window,
-        delay: 250,
-        k: 64,
+        delay: 200,
+        k: 85,
         openWindow: function() {
             return window.open(document.location, '_blank');
         },
