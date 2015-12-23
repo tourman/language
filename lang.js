@@ -27,5 +27,5 @@
             return $iframe;
         }
     };
-    lang.iframes();
+    window.lang = lang;
 })(jQuery);
