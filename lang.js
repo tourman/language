@@ -16,7 +16,7 @@
         },
         speakDual: function(dualPhrase) {
             setTimeout(lang.speak.bind(lang.ru, dualPhrase.ru), 0);
-            setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), 2000);
+            setTimeout(lang.speak.bind(lang.tr, dualPhrase.tr), 100 + 64 * lang.ru.length);
         },
         getDualPhrase: function() {
             return lang.dualPhrases[ Math.round( Math.random() * (lang.dualPhrases.length - 1) ) ];
@@ -43,6 +43,10 @@
             {
                 tr: 'Özür dilerim.',
                 ru: 'Прошу прощения, когда провинились.'
+            },
+            {
+                tr: 'Ellerinize sağlık!',
+                ru: 'Здоровья вашим ручкам, когда вкусно.'
             }
         ]
     };
