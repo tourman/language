@@ -20,7 +20,7 @@
         },
         getDualPhrase: function() {
             return lang.dualPhrases[ Math.round( Math.random() * (lang.dualPhrases.length - 1) ) ];
-        }
+        },
         sequence: function() {
             var dualPhrase = lang.getDualPhrase();
             console.log(dualPhrase);
