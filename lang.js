@@ -16,10 +16,13 @@
         },
         $getIframe: function() {
             var $iframe = $('iframe')
+                .attr({
+                    src: 'https://www.ivona.com/us/'
+                })
                 .css({
                     display: 'block',
                     width: '100%',
-                    height: '100%'
+                    height: '50%'
                 });
             return $iframe;
         }
