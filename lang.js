@@ -4,12 +4,24 @@
         tr: window,
         delay: 200,
         k: 85,
-        openWindow: function() {
-            return window.open(document.location, '_blank');
+        openWindow: function(name) {
+            var iframe = window.document.createElement('iframe');
+            iframe.src = window.document.location;
+            iframe.name = name;
+            window.document.getElementsByTagName('body')[0].appendChild(iframe);
+            return window[name];
         },
         openWindows: function() {
-            lang.ru = lang.openWindow();
-            lang.tr = lang.openWindow();
+            lang.ru = lang.openWindow('ru');
+            lang.tr = lang.openWindow('tr');
+        },
+        setLanguage: function(language) {
+            var $ = this.jQuery;
+            $('a.item:contains(' + language + ')').click();
+        },
+        setLanguages: function() {
+            lang.setLanguage.call(lang.ru, 'Russian');
+            lang.setLanguage.call(lang.tr, 'Turkish');
         },
         speak: function(phrase) {
             var $ = this.jQuery;
