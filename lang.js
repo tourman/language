@@ -84,7 +84,7 @@ var s=document.createElement("script");s.setAttribute("src","https://rawgit.com/
             possessive =    lang.getPossessive  (person, number, sentence);
 
             phrase = form + plural + particle + y + possessive + sentence;
-            phrase = phrase.stringAt(0).toUpperCase() + phrase.slice(1);
+            phrase = phrase.charAt(0).toUpperCase() + phrase.slice(1);
 
             lang.speak.call(window, phrase);
             console.log(phrase);
