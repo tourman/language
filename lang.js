@@ -90,7 +90,7 @@ var s=document.createElement("script");s.setAttribute("src","https://rawgit.com/
             console.log(phrase);
         },
         getVerbForm: function() {
-            var index = Math.floor( Math.random() * lang.verb.forms.length );
+            var index = Math.floor( Math.random() * lang.verbs.forms.length );
             return lang.verbs.forms[ index ];
         },
         getVerbPerson: function() {
