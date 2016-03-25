@@ -99,7 +99,7 @@ var s=document.createElement("script");s.setAttribute("src","https://rawgit.com/
         },
         getVerbNumber: function() {
             var index = Math.floor( Math.random() * 2 );
-            return index ? 'singular' : 'plural;
+            return index ? 'singular' : 'plural';
         },
         getVerbSentence: function() {
             var index = Math.floor( Math.random() * 2 );
