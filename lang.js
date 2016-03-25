@@ -119,9 +119,9 @@ var s=document.createElement("script");s.setAttribute("src","https://rawgit.com/
             if (sentence == '.') {
                 particle = '';
             } else if (person == '3' && number == 'plural') {
-                particle = lang.verbs.particles[1];
+                particle = ' ' + lang.verbs.particles[1];
             } else {
-                particle = lang.verbs.particles[0];
+                particle = ' ' + lang.verbs.particles[0];
             }
             return particle;
         },
