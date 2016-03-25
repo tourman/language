@@ -89,7 +89,7 @@ var s=document.createElement("script");s.setAttribute("src","https://rawgit.com/
             lang.speak.call(window, phrase);
             console.log(phrase);
         },
-        getVerbForms: function() {
+        getVerbForm: function() {
             var index = Math.floor( Math.random() * lang.verb.forms.length );
             return lang.verbs.forms[ index ];
         },
