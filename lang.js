@@ -1,3 +1,11 @@
+/*
+//To paste onto ivona.com
+var script = document.createElement('script');
+script.setAttribute('src', 'https://rawgit.com/tourman/language/master/lang.js');
+document.getElementsByTagName('head')[0].appendChild(script);
+//Or compressed
+var s=document.createElement("script");s.setAttribute("src","https://rawgit.com/tourman/language/master/lang.js"),document.getElementsByTagName("head")[0].appendChild(s);
+*/
 (function() {
     var lang = {
         ru: window,
