@@ -49,6 +49,127 @@ var s=document.createElement("script");s.setAttribute("src","https://rawgit.com/
             lang.speakDual(dualPhrase);
             setTimeout(lang.sequence, 7000);
         },
+        verb: function() {
+            lang.speakVerb();
+            setTimeout(lang.verb, 5000);
+        },
+        speakVerb: function() {
+            var form =      lang.getVerbForm(),
+                person =    lang.getVerbPerson(),
+                number =    lang.getVerbNumber(),
+                sentence =  lang.getVerbSentence();
+            var plural,
+                particle,
+                y,
+                possessive;
+            /*
+                        plr   prt   y   poss
+            ---------------------------------
+            ben   | . |  -  |  -  | - | um
+            biz   | . |  -  |  -  | - | uz
+            sen   | . |  -  |  -  | - | sun
+            siz   | . |  -  |  -  | - | sunuz
+            o     | . |  -  |  -  | - | -
+            onlar | . | lar |  -  | - | -
+            ben   | ? |  -  |  mu | y | um
+            biz   | ? |  -  |  mu | y | uz
+            sen   | ? |  -  |  mu | - | sun
+            siz   | ? |  -  |  mu | - | sunuz
+            o     | ? |  -  |  mu | - | -
+            onlar | ? | lar |  mı | - | -
+            */
+            plural =        lang.getPlural      (person, number, sentence);
+            particle =      lang.getParticle    (person, number, sentence);
+            y =             lang.getY           (person, number, sentence);
+            possessive =    lang.getPossessive  (person, number, sentence);
+
+            phrase = form + plural + particle + y + possessive + sentence;
+            phrase = phrase.stringAt(0).toUpperCase() + phrase.slice(1);
+
+            lang.speak.call(window, phrase);
+            console.log(phrase);
+        },
+        getVerbForms: function() {
+            var index = Math.floor( Math.random() * lang.verb.forms.length );
+            return lang.verbs.forms[ index ];
+        },
+        getVerbPerson: function() {
+            var index = Math.floor( Math.random() * 3 );
+            return '' + (index + 1);
+        },
+        getVerbNumber: function() {
+            var index = Math.floor( Math.random() * 2 );
+            return index ? 'singular' : 'plural;
+        },
+        getVerbSentence: function() {
+            var index = Math.floor( Math.random() * 2 );
+            return index ? '.' : '?';
+        },
+        getPlural: function(person, number, sentence) {
+            var plural;
+            if (person == '3' && number == 'plural') {
+                plural = lang.verbs.possessive['3'].plural;
+            } else {
+                plural = '';
+            }
+            return plural;
+        },
+        getParticle: function(person, number, sentence) {
+            var particle;
+            if (sentence == '.') {
+                particle = '';
+            } else if (person == '3' && number == 'plural') {
+                particle = lang.verbs.particles[1];
+            } else {
+                particle = lang.verbs.particles[0];
+            }
+            return particle;
+        },
+        getY: function(person, number, sentence) {
+            var y;
+            if (sentence == '?' && person == '1') {
+                y = 'y';
+            } else {
+                y = '';
+            }
+            return y;
+        },
+        getPossessive: function(person, number, sentence) {
+            var possessive;
+            if (person == '3') {
+                possessive = '';
+            } else {
+                possessive = lang.verbs.possessive[person][number];
+            }
+            return possessive;
+        },
+        verbs: {
+            forms: [
+                'alıyor',
+                'almıyor',
+                'alamıyor',
+                'alabiliyor',
+                'almayabiliyor'
+            ],
+            possessive: {
+                '1': {
+                    singular: 'um',
+                    plural: 'uz'
+                },
+                '2': {
+                    singular: 'sun',
+                    plural: 'sunuz'
+                },
+                '3': {
+                    plural: 'lar'
+                }
+            },
+            particles: ['mu', 'mı'],
+            sentences: [
+                '.',
+                '?'
+            ]
+        },
         dualPhrases: [
             {ru:"Здравствуйте!", tr:"Merhaba!"},
             {ru:"Привет!", tr:"Selam!"},
